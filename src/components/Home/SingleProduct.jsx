@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const SingleProduct = ({ shoe }) => {
-  const { id, title, price, description, image_url } = shoe;
+  const { _id, title, price, description, image_url } = shoe;
 
   const truncateDescription = (desc, maxLength) => {
     return desc.length > maxLength ? desc.slice(0, maxLength) + "..." : desc;
@@ -26,7 +26,7 @@ const SingleProduct = ({ shoe }) => {
         <p>{truncateDescription(description, 150)}</p>
         <div className="card-actions justify-center">
           <button className="btn bg-customSecondary rounded-none text-white">
-            <Link to={`products/${id}`}>See details</Link>
+            <Link to={`products/${_id}`}>See details</Link>
           </button>
         </div>
       </div>

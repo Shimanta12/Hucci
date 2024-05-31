@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 
 const SingleProductDashboard = ({ shoe, handleDelete }) => {
-  const { id, title, price, description, image_url } = shoe;
+  const { _id, title, price, description, image_url } = shoe;
 
   const truncateDescription = (desc, maxLength) => {
     return desc.length > maxLength ? desc.slice(0, maxLength) + "..." : desc;
@@ -26,19 +26,21 @@ const SingleProductDashboard = ({ shoe, handleDelete }) => {
         <p>{truncateDescription(description, 150)}</p>
         <div className="card-actions justify-around">
           <button className="btn bg-indigo-500 text-white">
-            <Link to={`/dashboard/all-products/${id}`}>See details</Link>
+            <Link to={`/dashboard/all-products/${_id}`}>See details</Link>
           </button>
           <button className="btn bg-green-500 text-white">
-            <Link to={`/dashboard/all-products/edit-products/${id}`}>Edit</Link>
+            <Link to={`/dashboard/all-products/edit-products/${_id}`}>
+              Edit
+            </Link>
           </button>
 
           <button
             className="btn bg-red-500 text-white"
-            onClick={() => document.getElementById(id).showModal()}
+            onClick={() => document.getElementById(_id).showModal()}
           >
             Delete
           </button>
-          <dialog id={id} className="modal">
+          <dialog id={_id} className="modal">
             <div className="modal-box">
               <h3 className="font-bold text-lg">Are you sure?</h3>
               <div className="modal-action">
@@ -46,7 +48,7 @@ const SingleProductDashboard = ({ shoe, handleDelete }) => {
                   <button className="btn">No</button>
                   <button
                     onClick={() => {
-                      handleDelete(id);
+                      handleDelete(_id);
                     }}
                     className="btn"
                   >

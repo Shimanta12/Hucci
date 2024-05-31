@@ -29,14 +29,13 @@ const AddProducts = () => {
     e.preventDefault();
     const form = e.target;
 
-    const id = form.id.value;
     const title = form.title.value;
     const brand = form.brand.value;
     const price = form.price.value;
     const description = form.description.value;
     const img_url = form.img_url.value;
 
-    const shoe = { id, title, brand, price, description, img_url };
+    const shoe = { title, brand, price, description, img_url };
     setProduct(shoe);
   };
   const confirmSubmit = async () => {
@@ -48,7 +47,8 @@ const AddProducts = () => {
       body: JSON.stringify(product),
     })
       .then((res) => {
-        if (res.status === 201) {
+        console.log(res.status);
+        if (res.status === 200) {
           setSuccessfull(true);
         } else {
           setFailed(true);
@@ -66,14 +66,6 @@ const AddProducts = () => {
     <div className="w-3/4 mx-auto">
       <form onSubmit={handleSubmit}>
         <h1 className="text-3xl font-bold text-center my-5">Add Product</h1>
-        <div className="mt-2">
-          <input
-            className="bg-gray-100 p-2 w-full border border-b-black focus:bg-customSecondary focus:text-white rounded"
-            type="text"
-            name="id"
-            placeholder="Id"
-          />
-        </div>
         <div className="mt-2">
           <input
             className="bg-gray-100 p-2 w-full border border-b-black focus:bg-customSecondary focus:text-white rounded"

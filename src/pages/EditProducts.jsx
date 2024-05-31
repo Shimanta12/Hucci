@@ -3,9 +3,8 @@ import { useLoaderData } from "react-router-dom";
 
 const EditProducts = () => {
   const shoe = useLoaderData();
-  const prevId = shoe.id;
+  const prevId = shoe._id;
 
-  const [id, setId] = useState(shoe.id);
   const [title, setTitle] = useState(shoe.title);
   const [brand, setBrand] = useState(shoe.brand);
   const [price, setPrice] = useState(shoe.price);
@@ -42,7 +41,6 @@ const EditProducts = () => {
 
   const confirmSubmit = async () => {
     const product = {
-      id,
       title,
       brand,
       price,
@@ -77,16 +75,6 @@ const EditProducts = () => {
     <div className="w-3/4 mx-auto">
       <form onSubmit={handleSubmit}>
         <h1 className="text-3xl font-bold text-center my-5">Edit Product</h1>
-        <div className="mt-2">
-          <input
-            className="bg-gray-100 p-2 w-full border border-b-black focus:bg-customSecondary focus:text-white rounded"
-            type="text"
-            name="id"
-            placeholder="Id"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-          />
-        </div>
         <div className="mt-2">
           <input
             className="bg-gray-100 p-2 w-full border border-b-black focus:bg-customSecondary focus:text-white rounded"
